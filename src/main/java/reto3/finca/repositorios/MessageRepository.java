@@ -9,19 +9,19 @@ import reto3.finca.entidades.Messages;
 
 @Repository
 public class MessageRepository {
-    
+
     @Autowired
     private MessageCrudRepository messageCrudRepository;
 
-    public List<Messages> getAll(){
+    public List<Messages> getAll() {
         return (List<Messages>) messageCrudRepository.findAll();
     }
 
-    public Optional<Messages> getMessage(Long idMessage){
+    public Optional<Messages> getMessage(Long idMessage) {
         return messageCrudRepository.findById(idMessage);
     }
 
-    public Messages save(Messages m){
+    public Messages save(Messages m) {
         return messageCrudRepository.save(m);
     }
 }

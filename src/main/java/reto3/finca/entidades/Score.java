@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 
-
 @Entity
-@Table(name="score")
+@Table(name = "score")
 public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,9 +51,4 @@ public class Score implements Serializable {
         this.reservations = reservations;
     }
 
-    
-
-    
-
-    
 }

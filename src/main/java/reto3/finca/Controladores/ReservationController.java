@@ -12,25 +12,26 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Reservation")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 public class ReservationController {
 
     @Autowired
     private ReservationService reservationService;
 
     @GetMapping("/all")
-    public List<Reservations> getReservations(){
+    public List<Reservations> getReservations() {
         return reservationService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Reservations> getReservation(@PathVariable("id") Long idReservation){
+    public Optional<Reservations> getReservation(@PathVariable("id") Long idReservation) {
         return reservationService.getReservation(idReservation);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Reservations save(@RequestBody Reservations reservation){
+    public Reservations save(@RequestBody Reservations reservation) {
         return reservationService.save(reservation);
     }
 }

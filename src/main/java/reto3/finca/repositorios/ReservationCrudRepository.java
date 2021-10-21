@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import reto3.finca.entidades.Reservations;
 
 public interface ReservationCrudRepository extends CrudRepository<Reservations, Long> {
-    
+
 }

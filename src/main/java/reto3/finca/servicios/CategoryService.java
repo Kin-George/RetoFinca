@@ -9,29 +9,29 @@ import java.util.Optional;
 import reto3.finca.repositorios.CategoryRepository;
 import reto3.finca.entidades.Category;
 
-
 @Service
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public List<Category> getAll(){
+    public List<Category> getAll() {
         return categoryRepository.getAll();
     }
-    public Optional<Category> getCategory(Long id){
+
+    public Optional<Category> getCategory(Long id) {
         return categoryRepository.getCategory(id);
     }
-    public Category save(Category f){
-        if(f.getId()==null){
+
+    public Category save(Category f) {
+        if (f.getId() == null) {
             return categoryRepository.save(f);
-        }else{
-            Optional<Category> faux=categoryRepository.getCategory(f.getId());
-            if(faux.isEmpty()){
+        } else {
+            Optional<Category> faux = categoryRepository.getCategory(f.getId());
+            if (faux.isEmpty()) {
                 return categoryRepository.save(f);
-            }else{
+            } else {
                 return f;
             }
         }
-    } 
+    }
 }
-

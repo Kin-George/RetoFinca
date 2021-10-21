@@ -12,13 +12,15 @@ public class CategoryRepository {
     @Autowired
     private CategoryCrudRepository categoryCrudRepository;
 
-    public List<Category> getAll(){
+    public List<Category> getAll() {
         return (List<Category>) categoryCrudRepository.findAll();
     }
-    public Optional<Category> getCategory(Long id){
+
+    public Optional<Category> getCategory(Long id) {
         return categoryCrudRepository.findById(id);
     }
-    public Category save(Category c){
+
+    public Category save(Category c) {
         return categoryCrudRepository.save(c);
     }
 }

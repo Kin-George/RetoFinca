@@ -4,27 +4,24 @@ import javax.persistence.*;
 import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @Entity
-@Table(name="mensajes")
+@Table(name = "mensajes")
 public class Messages implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMessage;
-    @Column(name="messageText", nullable = false, length = 250)
+    @Column(name = "messageText", nullable = false, length = 250)
     private String messageText;
 
     // Relacion mensaje-finca
     @ManyToOne
-    //@JoinColumn(name="idFarm") // id
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({ "messages", "reservations" })
     private Farms farm;
 
     // Relacion mensaje-cliente
     @ManyToOne
-    //@JoinColumn(name="clientId")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({ "messages", "reservations" })
     private Client client;
 
     public Long getIdMessage() {
@@ -59,22 +56,4 @@ public class Messages implements Serializable {
         this.client = client;
     }
 
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-
-    
 }

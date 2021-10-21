@@ -13,16 +13,16 @@ public class ReservationRepository {
     @Autowired
     private ReservationCrudRepository reservationCrudRepository;
 
-    public List<Reservations> getAll(){
+    public List<Reservations> getAll() {
         return (List<Reservations>) reservationCrudRepository.findAll();
     }
 
-    public Optional <Reservations> getReservation(Long idReservation){
+    public Optional<Reservations> getReservation(Long idReservation) {
         return reservationCrudRepository.findById(idReservation);
     }
 
-    public Reservations save(Reservations r){
+    public Reservations save(Reservations r) {
         return reservationCrudRepository.save(r);
     }
-    
+
 }

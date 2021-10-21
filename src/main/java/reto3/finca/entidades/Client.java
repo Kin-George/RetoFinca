@@ -1,34 +1,32 @@
 package reto3.finca.entidades;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 
 import java.util.List;
 
 @Entity
-@Table(name="clientes") //client
+@Table(name = "clientes") // client
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idClient;
-    @Column(name="email", nullable = false, length = 250)
+    @Column(name = "email", nullable = false, length = 250)
     private String email;
-    @Column(name="password", nullable = false, length = 45)
+    @Column(name = "password", nullable = false, length = 45)
     private String password;
-    @Column(name="name", nullable = false, length = 45)
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
-    @Column(name="age", nullable = false, length = 45)
+    @Column(name = "age", nullable = false, length = 45)
     private Integer age;
-    
+
     // Relacion cliente-mensaje
-    @OneToMany //(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    //@JsonIgnoreProperties("client")
+    @OneToMany
+
     private List<Messages> messages;
 
     // Relacion cliente-reservas
-    @OneToMany //(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    //@JsonIgnoreProperties("client")
+    @OneToMany
     private List<Reservations> reservations;
 
     public Long getIdClient() {
@@ -86,10 +84,4 @@ public class Client implements Serializable {
     public void setReservations(List<Reservations> reservations) {
         this.reservations = reservations;
     }
-
-    
-
-    
-    
-    
 }

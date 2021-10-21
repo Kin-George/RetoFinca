@@ -3,22 +3,20 @@ package reto3.finca.entidades;
 import java.util.List;
 import javax.persistence.*;
 import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="categorias")
-public class Category implements Serializable{
+@Table(name = "categorias")
+public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="name",nullable = false,length = 45)
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
-    @Column(name="description", nullable= false, length = 250)
-    private String description; 
-    
+    @Column(name = "description", nullable = false, length = 250)
+    private String description;
+
     // Relacion finca-categoria
-    @OneToMany //(cascade = {CascadeType.PERSIST}, mappedBy = "category")
-    //@JsonIgnoreProperties("category")
+    @OneToMany
     private List<Farms> farms;
 
     public Long getId() {
@@ -52,20 +50,4 @@ public class Category implements Serializable{
     public void setFarms(List<Farms> farms) {
         this.farms = farms;
     }
-
-    
-
-    
-
-    
-
-    
 }
-
-    
-
-    
-
-    
-    
-

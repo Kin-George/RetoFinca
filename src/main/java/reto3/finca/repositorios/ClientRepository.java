@@ -11,13 +11,15 @@ public class ClientRepository {
     @Autowired
     private ClientCrudRepository clientRepository;
 
-    public List<Client> getAll(){
+    public List<Client> getAll() {
         return (List<Client>) clientRepository.findAll();
     }
-    public Optional<Client> getClient(Long id){
+
+    public Optional<Client> getClient(Long id) {
         return clientRepository.findById(id);
     }
-    public Client save(Client client){
+
+    public Client save(Client client) {
         return clientRepository.save(client);
     }
 }

@@ -12,26 +12,27 @@ import reto3.finca.servicios.FarmService;
 
 @RestController
 @RequestMapping("/api/Farm")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 
 public class FarmController {
-    @Autowired 
+    @Autowired
     private FarmService farmService;
-    
+
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<Farms> getFarms(){
+    public List<Farms> getFarms() {
         return farmService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Farms> getFarm(@PathVariable("id") Long id){
+    public Optional<Farms> getFarm(@PathVariable("id") Long id) {
         return farmService.getFarm(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Farms save(@RequestBody Farms f){
+    public Farms save(@RequestBody Farms f) {
         return farmService.save(f);
     }
 }

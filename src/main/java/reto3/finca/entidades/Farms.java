@@ -5,38 +5,37 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
-
 @Entity
-@Table(name="fincas") 
-public class Farms implements Serializable{
+@Table(name = "fincas")
+public class Farms implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //idfarms
-    @Column(name="name", nullable = false, length = 45)
+    private Long id; // idfarms
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
-    @Column(name="address", nullable = false, length = 45)
+    @Column(name = "address", nullable = false, length = 45)
     private String address;
-    @Column(name="extension")
+    @Column(name = "extension")
     private Integer extension;
-    @Column(name="description", nullable = false, length = 250)
+    @Column(name = "description", nullable = false, length = 250)
     private String description;
 
     // Relacion categoria-finca
     @ManyToOne
-    @JoinColumn(name="CATEGORY")
-    @JsonIgnoreProperties("farms") // category farms
+    @JoinColumn(name = "CATEGORY")
+    @JsonIgnoreProperties("farms") 
     private Category category;
 
     // Relacion finca-mensajes
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="farm")
-    @JsonIgnoreProperties({"farm","client"}) // client, farms
+    @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "farm")
+    @JsonIgnoreProperties({ "farm", "client" }) 
     private List<Messages> messages;
 
     // Relacion finca-reservas
     @OneToMany
-    //@JsonIgnoreProperties({"farms","messages"})
     private List<Reservations> reservations;
 
+    // Getter and setter
     public Long getId() {
         return id;
     }
@@ -101,27 +100,4 @@ public class Farms implements Serializable{
         this.reservations = reservations;
     }
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
 }
-
-    
-
-    
-    
-    
-    
-    
-    
-
