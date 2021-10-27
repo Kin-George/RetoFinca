@@ -34,4 +34,15 @@ public class ReservationController {
     public Reservations save(@RequestBody Reservations reservation) {
         return reservationService.save(reservation);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservations update(@RequestBody Reservations reservation) {
+        return reservationService.update(reservation);
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") Long idReservation) {
+        return reservationService.deleteReservation(idReservation);
+    }
 }

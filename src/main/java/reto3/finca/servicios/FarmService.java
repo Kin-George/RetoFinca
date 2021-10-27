@@ -34,4 +34,41 @@ public class FarmService {
             }
         }
     }
+
+    public Farms update(Farms f){
+        if(f.getId()!=null){
+            Optional<Farms> faux=farmRepository.getFarm(f.getId());
+            if(!faux.isEmpty()){
+                if(f.getName()!=null){
+                    faux.get().setName(f.getName());
+                }
+                if(f.getAddress()!=null){
+                    faux.get().setAddress(f.getAddress());
+                }
+                if(f.getExtension()!=null){
+                    faux.get().setExtension(f.getExtension());
+                }
+                if(f.getDescription()!=null){
+                    faux.get().setDescription(f.getDescription());
+                }
+                if(f.getCategory()!=null){
+                    faux.get().setCategory(f.getCategory());
+                }
+                farmRepository.save(faux.get());
+                return faux.get();
+            }else{
+                return f;
+            }
+        }else{
+            return f;
+        }
+    }
+
+    public boolean deleteFarm(Long id) {
+        Boolean aBoolean = getFarm(id).map(f -> {
+            farmRepository.delete(f);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
 }

@@ -35,4 +35,16 @@ public class FarmController {
     public Farms save(@RequestBody Farms f) {
         return farmService.save(f);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Farms update(@RequestBody Farms f) {
+        return farmService.update(f);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") Long id) {
+        return farmService.deleteFarm(id);
+    }
 }

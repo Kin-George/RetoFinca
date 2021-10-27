@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "clientes") // client
+@Table(name = "clientes") 
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,6 @@ public class Client implements Serializable {
 
     // Relacion cliente-mensaje
     @OneToMany
-
     private List<Messages> messages;
 
     // Relacion cliente-reservas

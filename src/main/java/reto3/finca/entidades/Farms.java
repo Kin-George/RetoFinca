@@ -10,7 +10,7 @@ import java.util.List;
 public class Farms implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // idfarms
+    private Long id; 
     @Column(name = "name", nullable = false, length = 45)
     private String name;
     @Column(name = "address", nullable = false, length = 45)

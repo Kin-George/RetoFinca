@@ -60,8 +60,8 @@ function pintarClientes(items){
         myTable += "<td>"+items[i].email+"</td>";
         myTable += "<td>"+items[i].age+"</td>";        
         myTable += '<td>';
-        myTable += '<button class="btn btn-danger btn-sm" onclick="EliminarFinca(' + items[i].idClient + ')">Eliminar</button>';
-        myTable += '<button class="btn btn btn-secondary btn-sm" onclick="ActualizarFinca(' + items[i].idClient + ')">Actualizar</button> </td>';
+        myTable += '<button class="btn btn-danger btn-sm" onclick="eliminarCliente(' + items[i].idClient + ')">Eliminar</button>';
+        myTable += '<button class="btn btn btn-secondary btn-sm" onclick="actualizarCliente(' + items[i].idClient + ')">Actualizar</button> </td>';
         myTable += "</tr>";
 
     }
@@ -93,7 +93,7 @@ function guardarCliente(){
             $("#age").val(""),
             $("#password").val("")
             listarClientes();
-            console.log("Guardado!");
+            alert("Guardado!");
             
         }   , error: function(textStatus){
             console.log(textStatus)
@@ -110,7 +110,7 @@ function actualizarCliente(){
         password: $("#password").val("")
     };
     let dataToSend = JSON.stringify(myData);
-    let urlA= urlApi() +"/Client/save";
+    let urlA= urlApi() +"/Client/update";
     $.ajax({
         url: urlA,
         type: "PUT",
@@ -133,12 +133,12 @@ function actualizarCliente(){
 }
 
 
-function EliminarClientes(id){
+function eliminarCliente(id){
     let myData={
         id: id
     };
     let dataToSend = JSON.stringify(myData);
-    let urlA= urlApi() +"/Client/delete";
+    let urlA= urlApi() +"/Client/1";
     $.ajax({
         url: urlA,
         type: "DELETE",
@@ -160,3 +160,4 @@ function EliminarClientes(id){
         console.log('ALWAYS');
     });    
 }
+
